@@ -23,8 +23,8 @@ def main():
     send_list.append(channel)
     send_list.append(data & 0x7f)
     send_list.append((data>>7)&0x7f)
-    ser.write(array.array('B',send_list))
-    print(array.array('B',send_list))
+    ser.write(array.array('B',send_list).tostring())
+    print(array.array('B',send_list).tostring())
 
 
     ser.write("hello")
