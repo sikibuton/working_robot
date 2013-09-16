@@ -1,4 +1,0 @@
-working_robot
-=============
-
-hello.
