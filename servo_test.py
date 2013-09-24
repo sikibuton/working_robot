@@ -14,13 +14,20 @@ import serial
 import array
 import time
 
-class maestro18:
-	def __init__(self):
-		self.terget = 1500 #us
+class servo:
+      def __init__(self,minus90_us,plus90_us,max_limit_degree,min_limit_degree):
+        self.minus90_us = minus90_us
+        self.plus90_us = plus90_us
+        self.terget = (self.plus90_us+self.minus90_us)/2 #us
+        self.max_limit_degree = max_limit_degree
+        self.min_limit_degree = min_limit_degree
+      def set_angle(self,degree):
+          if self.max_limit_degree < degree:
+             degree = self.max_limit_degree
+          if self.min_limit_degree > degree:
+             degree = self.min_limit_degree
 
-	def set_angle(self,degree):
-		pass
-		
+
 
 def main():
 	os.system("echo ttyO1_armhf.com > /sys/devices/bone_capemgr.9/slots")
